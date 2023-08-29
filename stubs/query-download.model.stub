@@ -1,0 +1,46 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Exports\CollectionExport;
+
+class DummyClass extends CollectionExport
+{
+    /**
+     * 表头
+     * @return array
+     */
+    public function headings(): array
+    {
+         return [
+             //
+         ];
+    }
+
+    /**
+     * 每一列的数据
+     * @param $row
+     * @return array
+     */
+    public function columns($row): array
+    {
+        /**
+         * @var $row
+         */
+         return [
+             //
+         ];
+    }
+
+    /**
+     * 要转为字符串的列标
+     * @return array
+     */
+    public function stringColumns(): array
+    {
+         return [
+            //
+         ];
+    }
+
+}

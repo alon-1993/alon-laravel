@@ -1,0 +1,13 @@
+<?php
+namespace DummyNamespace;
+
+use Illuminate\Notifications\Action;
+use MyCLabs\Enum\Enum;
+
+/**
+ * @method static DummyClass CONST_KEY()
+ */
+final class DummyClass extends Enum
+{
+    private const CONST_KEY = 'const_value';
+}

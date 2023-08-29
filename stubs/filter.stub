@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Builder;
+
+trait {{ class }}
+{
+    use Filter;
+}

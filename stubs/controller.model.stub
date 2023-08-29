@@ -1,0 +1,62 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ namespacedRequests }}
+use \Illuminate\Http\JsonResponse;
+use App\Http\Requests\{{ model }}Request;
+
+class {{ class }} extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function index(Request $request) : JsonResponse
+    {
+        $rows = {{ model }}::query()->filter($request->all())->latest('id')->paginate($request->get('limit'));
+        return $this->success($rows);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  {{ model }}Request $request
+     * @return JsonResponse
+     */
+    public function store({{ model }}Request $request) : JsonResponse
+    {
+        $data = $request->all();
+        {{ model }}::query()->create($data);
+        return $this->success();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  {{ model }}Request  $request
+     * @param  {{ model }}  ${{ modelVariable }}
+     * @return JsonResponse
+     */
+    public function update({{ model }}Request $request, {{ model }} ${{ modelVariable }}) : JsonResponse
+    {
+        $data = $request->all();
+        ${{ modelVariable }}->fill($data)->save();
+        return $this->success();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  {{ model }}  ${{ modelVariable }}
+     * @return JsonResponse
+     */
+    public function destroy({{ model }} ${{ modelVariable }}) : JsonResponse
+    {
+        ${{ modelVariable }}->delete();
+        return $this->success();
+    }
+}
